@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Mis Finanzas</title>
+        
+    </h:head>
+    <h:body>
+        <fieldset>
+            <legend>#{gC.titulo}</legend>
+            <f:view>
+                <h:form p:role="form">
+
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="Fecha:" for="fec" />
+                        <h:inputText p:type="date" id="fec" value="#{gC.gasto.fec}" title="Fec" required="true" requiredMessage="La fecha es obligatoria.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                        <h:outputLabel value="Descripción:" for="gas" />
+                        <h:inputText id="gas" value="#{gC.gasto.gas}" title="Gas" required="true" requiredMessage="The Gas field is required."/>
+                        <h:outputLabel value="Monto:" for="val" />
+                        <h:inputText id="val" value="#{gC.gasto.val}" title="Val" />
+                        <h:outputLabel value="Usuario:" for="fkIdUsu" />
+                        <h:selectOneMenu class="form-control" id="fkIdUsu" value="#{gC.nombreUsuario}"  title="FkIdUsu">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{gC.listaUsuarios}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Categoría:" for="fkIdCat" />
+
+
+                        <h:selectOneMenu id="fkIdCat" value="#{gC.nombreCategoria}" >
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{gC.listaCats}"/>
+                            
+                        </h:selectOneMenu>
+
+
+                    </h:panelGrid>
+                    <h:commandButton value="Guardar" action="#{gC.doGuardar()}"/> &nbsp;
+                    <h:commandButton immediate="true" value="Cancelar" action="index"/>
+                </h:form>
+            </f:view>
+        </fieldset>
+
+
+    </h:body>
+</html>
+

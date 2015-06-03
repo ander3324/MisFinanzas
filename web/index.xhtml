@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>Mis Finanzas Personales</title>
+    </h:head>
+    <h:body>
+
+        <fieldset>
+            <legend>Últimos Gastos</legend>
+
+            <f:view>
+                <h:form>               
+                    <h:dataTable value="#{gC.ultimosGastos}" var="item" style="width: 100%;">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pkIdGas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fec}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Descripción"/>
+                            </f:facet>
+                            <h:outputText value="#{item.gas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Monto"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item.val}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Usuario"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdUsu.usu}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Categoría"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkIdCat.cat}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Editar"/>
+                            <h:commandButton value="Borrar"/>
+                        </h:column>
+                    </h:dataTable>
+                    
+                    <br/><br/>
+                    
+                    <h:outputLabel value="Total de Gastos: #{gC.totalGastos}" style=" right"/>
+                    
+                    <br/><br/>
+                    <h:commandButton value="Nuevo Gasto" action="#{gC.doNuevo()}"/>
+                    
+                </h:form>
+            </f:view>
+        </fieldset>
+    </h:body>
+</html>
+
