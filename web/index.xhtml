@@ -3,12 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Mis Finanzas Personales</title>
     </h:head>
     <h:body>
-
+        
+        <fieldset>
+            <legend>
+                Filtros de Gastos:
+            </legend>
+            <h:form>
+                <h:panelGrid columns="4">
+                    <h:outputLabel value="Por Gasto: " for="txtGas"/>
+                    <h:inputText p:prompt="Ingrese descripción" value="#{gC.gasto.gas}"/>
+                    <h:commandButton value="Buscar" action="#{gC.doBuscarPorGasto()}"/>
+                    <h:commandButton value="Recargar" action="#{gC.doRecargar()}"/>
+                </h:panelGrid>
+            </h:form>
+        </fieldset>
+        &nbsp;
         <fieldset>
             <legend>Últimos Gastos</legend>
 

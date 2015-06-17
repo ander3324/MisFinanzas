@@ -19,6 +19,7 @@
                         <h:outputLabel value="Fecha:" for="fec" />
                         <h:inputText p:type="date" id="fec" value="#{gC.gasto.fec}" title="Fec" required="true" requiredMessage="La fecha es obligatoria.">
                             <f:convertDateTime pattern="yyyy-MM-dd" />
+                            
                         </h:inputText>
                         <h:outputLabel value="Descripción:" for="gas" />
                         <h:inputText id="gas" value="#{gC.gasto.gas}" title="Gas" required="true" requiredMessage="The Gas field is required."/>

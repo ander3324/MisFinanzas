@@ -63,7 +63,7 @@ public class GastosController {
         ultimosGastos = gasDao.selectUltimosGastos();
         totalGastos = gasDao.selectTotalGastos();
     }
-
+    
     @PostConstruct
     public void inicializar() {
         cargarGastos();
@@ -87,6 +87,16 @@ public class GastosController {
         //Actualizar listas con el nuevo gasto:
         cargarGastos();
 
+        return "index";
+    }
+    
+    public String doBuscarPorGasto(){
+        ultimosGastos = gasDao.selectGastos(gasto.getGas());
+        return "index";
+    }
+    
+    public String doRecargar(){
+        cargarGastos();
         return "index";
     }
 
